@@ -25,5 +25,6 @@ body {
   margin: 0 auto;
   background: white;
   padding: 0px 24px 24px;
+  box-shadow: 0px 5px 25px #888888;
 }
 </style>
