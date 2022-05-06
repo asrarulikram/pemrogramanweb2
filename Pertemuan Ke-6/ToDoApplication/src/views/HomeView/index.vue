@@ -3,7 +3,12 @@
     <div class="contentLeft">
       <ul>
         <li v-bind:key="item" v-for="item in store.todo">
-          <item-todo :done="item.done" :task="item.task" :desc="item.desc" />
+          <item-todo
+            :id="item.id"
+            :done="item.done"
+            :task="item.task"
+            :desc="item.desc"
+          />
         </li>
       </ul>
     </div>
@@ -14,7 +19,9 @@
         placeholder="Masukkan Deskripsi"
         v-model="store.newDesc"
       />
-      <button class="submit" @click="store.addTodo()">Add</button>
+      <button class="submit" @click="store.submitTodo()">
+        {{ store.edit ? "Ubah" : "Tambah" }}
+      </button>
     </div>
   </div>
 </template>

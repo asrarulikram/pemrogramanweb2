@@ -3,17 +3,29 @@
     class="boxTask"
     :style="[done ? { background: '#007e33' } : { background: '#cc0000' }]"
   >
+    <span v-if="done"></span>
+    <button v-else @click="store.finishTodo(id)">Centang</button>
+    <button @click="store.getTodo(id)">Ubah</button>
+    <button @click="store.deleteTodo(id)">Hapus</button>
     <p class="title">{{ task }}</p>
     <p class="desc">{{ desc }}</p>
   </div>
 </template>
 
 <script>
+import { useToDoStore } from "./../../stores/todo";
 export default {
   props: {
+    id: Number,
     done: Boolean,
     task: String,
     desc: String,
+  },
+  setup() {
+    const store = useToDoStore();
+    return {
+      store,
+    };
   },
 };
 </script>
